@@ -1,53 +1,60 @@
-// setting varibles
-var currentPage = 0;
-const bigText = document.getElementById('bigText');
-const resetBtn = document.getElementById('resetBtn');
-let randomSymbol = [ '!', '@', '#', '%', '^', 'B','*', '?' ]
+let bigText = document.getElementById("bigText");
+let smallText = document.getElementById("smallText");
+let nextButton = document.getElementById("nextButton");
+let resetButton = document.getElementById("resetButton");
+
+let page = 1;
+
+let symbol = ["!", "@", "#", "$", "%", "&", "*", "+", "~", "^"]; //create list of symbols
 
 
 
-let pageState = [
-    {
-    bigText: 'I can read your mind',
-    nextBtn: 'hidden', 
-    goBtn: 'visable', 
-    resetBtn:'hidden',
-    p: ' ',
-    list: 'hidden' 
-    },
-    {
-        bigText:'Pick a number from 01-99',
-        nextBtn:'visable',
-        goBtn:'hidden',
-        resetBtn:'visable',
-        p:'when you have your number click next',
-        list:'hidden'
-    },
-    {
-        bigText: 'Add both digits together to get a new number', 
-        nextBtn:'visable', 
-        goBtn:'hidden', 
-        resetBtn: 'visable',
-        p:'Ex: 14 is 1 + 4 = 5'  <br> + 'click next to proceed', 
-        list: 'hidden'
-    },
-    {
-        bigText: 'Subtract your new number from the original number', 
-        nextBtn:'visable', 
-        goBtn:'hidden', 
-        resetBtn: 'visable',
-        p:'Ex: 14 - 5 = 9'  <br> + 'click next to proceed', 
-        list: 'hidden'
 
-    },
-    {
-        bigText: '0-&'<br> '1-@'<br>'2-$'<br>3-B, 
-        nextBtn:'hidden', 
-        goBtn:'hidden', 
-        resetBtn: 'visable',
-        p:'Find your new number.'  <br> + 'Note the symbol beside the number.', 
-        list: 'hidden', 
-        revealBtn: 'visible'
+
+function changePage() {
+    if (page == 1) {
+        bigText.innerHTML = "I can read your mind.";
+        smallText.innerHTML = "MindReader";
+        actionButton.innerHTML = "GO";
+        actionButton.style.display = "block";
+        resetButton.innerHTML = ""; // need to hide
+        resetButton.style.display = "none";
+    } else if (page == 2) {
+        bigText.innerHTML = "Pick a number 1-99";
+        smallText.innerHTML = "When you have your number click next";
+        actionButton.innerHTML = "Next";
+        resetButton.innerHTML = "Reset";
+        resetButton.style.display = "block";
+    } else if (page == 3) {
+        bigText.innerHTML =
+            "Add both digits together to get a new number";
+        smallText.innerHTML =
+            "Ex 14 is 1 + 4 = 5 Click Next to Proceed";
+        actionButton.innerHTML = "Next";
+        resetButton.innerHTML = "Reset";
+        resetButton.style.display = "block";
+    } else if (page == 4) {
+        bigText.innerHTML =
+            "Subtract your new number from the original number.";
+        smallText.innerHTML = "Click Next to continue";
+        actionButton.innerHTML = "Next";
+        resetButton.innerHTML = "Reset";
+        resetButton.style.display = "block";
+    } else if (page == 5) {
+        bigText.innerHTML = shuffle();
+        smallText.innerHTML =
+            "Find your number.  Note the symbol beside your number.";
+        actionButton.innerHTML = "Reveal";
+        resetButton.innerHTML = "Reset";
+        resetButton.style.display = "block";
+    } else if (page == 6) {
+        bigText.innerHTML =
+            "Your symbol is...<br>" + winner;
+        smallText.innerHTML = "";
+        actionButton.innerHTML = "";
+        actionButton.style.display = "none";
+        resetButton.innerHTML = "Reset";
+        resetButton.style.display = "block";
+        
     }
-]
-    
+}
